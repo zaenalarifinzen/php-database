@@ -24,7 +24,7 @@ namespace Repository {
             // insert comment ke database
             $sql = "INSERT INTO comments (email, comment) VALUES (?, ?)";
             $statement = $this->connection->prepare($sql);
-            $statement->exec([$comment->getEmail(), $comment->getComment()]);
+            $statement->execute([$comment->getEmail(), $comment->getComment()]);
 
             // ambil id comment
             $id = $this->connection->lastInsertId();
@@ -39,7 +39,7 @@ namespace Repository {
             // select ke database
             $sql = "SELECT * FROM comments WHERE id = ?";
             $statement = $this->connection->prepare($sql);
-            $statement->exec([$id]);
+            $statement->execute([$id]);
 
             // iterasi
             if ($row = $statement->fetch()) {
